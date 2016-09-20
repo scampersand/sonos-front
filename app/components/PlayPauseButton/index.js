@@ -1,10 +1,11 @@
 import React from 'react';
-import { Icon } from 'react-fa';
+import PlayIcon from 'react-icons/fa/play';
+import PauseIcon from 'react-icons/fa/pause';
 import styles from './styles.css';
 
 function PlayPauseButton(props) {
   const playing = props.transportState === 'PLAYING';
-  const icon = <Icon size="2x" name={playing ? 'pause' : 'play'} />;
+  const icon = playing ? <PauseIcon /> : <PlayIcon />;
   const onClick = playing ? props.onPauseClicked : props.onPlayClicked;
   return (
     <div className={styles.playPauseButton}>
