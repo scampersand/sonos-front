@@ -1,15 +1,15 @@
 {
-  "name": "sonos-frontend",
-  "version": "0.1.0",
-  "description": "SONOS controller webapp",
+  "name": "react-boilerplate",
+  "version": "3.2.0",
+  "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
   "repository": {
     "type": "git",
-    "url": "git://github.com/scampersand/sonos-frontend.git"
+    "url": "git://github.com/mxstbr/react-boilerplate.git"
   },
   "engines": {
     "npm": ">=3"
   },
-  "author": "Scampersand",
+  "author": "Max Stoiber",
   "license": "MIT",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
