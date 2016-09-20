@@ -10,7 +10,7 @@ import styles from './styles.css';
 
 class PlayPauseButton extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    let buttonText = (this.props.transportState === "PLAYING" ? "||" : ">");
+    let buttonText = (this.props.transportState === "PLAYING" ? "||" : "▶");
     let onClick = (this.props.transportState === "PLAYING" ?
                    this.props.onPauseClicked : this.props.onPlayClicked);
     return (
