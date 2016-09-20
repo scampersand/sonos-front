@@ -12,9 +12,9 @@ export function defaultAction() {
 }
 
 export function playMusic() {
-  request('http://172.17.0.4:5000/transport_state', {
-    method: 'PUT',
-    body: '{"current_transport_state": "PLAYING"}',
+  request('http://172.17.0.4:5000/transport_info', {
+    method: 'POST',
+    body: '{"command": "PLAY"}',
     headers: new Headers({
       'content-type': 'application/json',
     }),
@@ -25,9 +25,9 @@ export function playMusic() {
 }
 
 export function pauseMusic() {
-  request('http://172.17.0.4:5000/transport_state', {
-    method: 'PUT',
-    body: '{"current_transport_state": "PAUSED_PLAYBACK"}',
+  request('http://172.17.0.4:5000/transport_info', {
+    method: 'POST',
+    body: '{"command": "PAUSE"}',
     headers: new Headers({
       'content-type': 'application/json',
     }),
