@@ -1,3 +1,16 @@
+/**
+ * The global state selectors
+ */
+
+import { createSelector } from 'reselect';
+
+const selectGlobal = () => (state) => state.get('global');
+
+const selectTransportState = () => createSelector(
+  selectGlobal(),
+  (globalState) => globalState.get('transportState')
+);
+
 // selectLocationState expects a plain JS object for the routing state
 const selectLocationState = () => {
   let prevRoutingState;
@@ -16,5 +29,7 @@ const selectLocationState = () => {
 };
 
 export {
+  selectGlobal,
+  selectTransportState,
   selectLocationState,
 };
