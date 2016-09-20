@@ -1,4 +1,3 @@
-export Fa500px from './500px';
 export FaAdjust from './adjust';
 export FaAdn from './adn';
 export FaAlignCenter from './align-center';

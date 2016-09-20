@@ -1,6 +1,5 @@
-
-let React = require('react');
-let IconBase = require('react-icon-base');
+import React from 'react';
+import IconBase from 'react-icon-base';
 
 export default class FaCoffee extends React.Component {
     render() {
