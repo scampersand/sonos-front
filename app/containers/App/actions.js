@@ -48,7 +48,7 @@ export function prevSong() {
     }),
   });
   return {
-    type: NEXT_ACTION,
+    type: BACK_ACTION,
   };
 }
 

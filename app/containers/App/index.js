@@ -12,15 +12,12 @@
  */
 
 import React from 'react';
-import { connect } from 'react-redux';
-import { fromJS } from 'immutable';
 import styles from './styles.css';
 
-export class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export default class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
     children: React.PropTypes.node,
-    transportState: React.PropTypes.string,
   };
 
   render() {
@@ -31,9 +28,3 @@ export class App extends React.Component { // eslint-disable-line react/prefer-s
     );
   }
 }
-
-const mapStateToProps = function(state) {
-  return state.get('global').toJS();
-}
-
-export default connect(mapStateToProps)(App);
