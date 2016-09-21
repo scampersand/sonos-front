@@ -7,6 +7,29 @@ import {
   NEXT_ACTION,
 } from './constants';
 
+const backendUrl = (window.location.hostname === '172.17.0.3' ?
+                    'http://172.17.0.4:5000' : 'http://172.17.0.7:5000');
+
+/*
+ * TODO wrap this stuff in a Sonos object in utils/sonos.js
+ */
+function sonos(path, options) {
+  options = {
+    headers: new Headers({
+      'content-type': 'application/json',
+    }),
+    ...options,
+  }
+  return request(backendUrl + path, options);
+}
+
+function sonosCmd(path, command) {
+  return sonos(path, {
+    method: 'POST',
+    body: JSON.stringify({command}),
+  });
+}
+
 export function defaultAction() {
   return {
     type: DEFAULT_ACTION,
@@ -14,52 +37,28 @@ export function defaultAction() {
 }
 
 export function playMusic() {
-  request('http://172.17.0.4:5000/transport_info', {
-    method: 'POST',
-    body: '{"command": "PLAY"}',
-    headers: new Headers({
-      'content-type': 'application/json',
-    }),
-  });
+  sonosCmd('/transport_info', 'PLAY');
   return {
     type: PLAY_ACTION,
   };
 }
 
 export function pauseMusic() {
-  request('http://172.17.0.4:5000/transport_info', {
-    method: 'POST',
-    body: '{"command": "PAUSE"}',
-    headers: new Headers({
-      'content-type': 'application/json',
-    }),
-  });
+  sonosCmd('/transport_info', 'PAUSE');
   return {
     type: PAUSE_ACTION,
   };
 }
 
 export function prevSong() {
-  request('http://172.17.0.4:5000/current_track', {
-    method: 'POST',
-    body: '{"command": "BACK"}',
-    headers: new Headers({
-      'content-type': 'application/json',
-    }),
-  });
+  sonosCmd('/current_track', 'BACK');
   return {
     type: BACK_ACTION,
   };
 }
 
 export function nextSong() {
-  request('http://172.17.0.4:5000/current_track', {
-    method: 'POST',
-    body: '{"command": "NEXT"}',
-    headers: new Headers({
-      'content-type': 'application/json',
-    }),
-  });
+  sonosCmd('/current_track', 'NEXT');
   return {
     type: NEXT_ACTION,
   };
