@@ -8,6 +8,6 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   header: {
     id: 'app.containers.PlayerPage.header',
-    defaultMessage: 'This is PlayerPage container !',
+    defaultMessage: 'SONOS',
   },
 });
