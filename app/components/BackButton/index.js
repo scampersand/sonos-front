@@ -5,7 +5,7 @@ import styles from './styles.css';
 function BackButton(props) {
   return (
     <div className={styles.backButton}>
-      <button onClick={props.onClick}><Icon /></button>
+      <button onClick={props.onClick}><Icon size={32}/></button>
     </div>
   );
 }

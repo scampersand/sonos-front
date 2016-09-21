@@ -5,7 +5,7 @@ import styles from './styles.css';
 
 function PlayPauseButton(props) {
   const playing = props.transportState === 'PLAYING';
-  const icon = playing ? <PauseIcon /> : <PlayIcon />;
+  const icon = playing ? <PauseIcon size={32}/> : <PlayIcon size={32}/>;
   const onClick = playing ? props.onPauseClicked : props.onPlayClicked;
   return (
     <div className={styles.playPauseButton}>
