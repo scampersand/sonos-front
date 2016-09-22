@@ -8,6 +8,8 @@ import {
   PAGE_LOADED,
   TRANSPORT_FETCH_SUCCEEDED,
   TRANSPORT_FETCH_FAILED,
+  CURRENT_TRACK_FETCH_SUCCEEDED,
+  CURRENT_TRACK_FETCH_FAILED,
 } from './constants';
 
 const backendUrl = (window.location.hostname === '172.17.0.3' ?
@@ -84,6 +86,20 @@ export function transportFetchSucceeded(transportInfo) {
 export function transportFetchFailed(message) {
   return {
     type: TRANSPORT_FETCH_FAILED,
+    message
+  };
+}
+
+export function currentTrackFetchSucceeded(currentTrackInfo) {
+  return {
+    type: CURRENT_TRACK_FETCH_SUCCEEDED,
+    currentTrackInfo,
+  };
+}
+
+export function currentTrackFetchFailed(message) {
+  return {
+    type: CURRENT_TRACK_FETCH_FAILED,
     message
   };
 }

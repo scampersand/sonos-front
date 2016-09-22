@@ -5,6 +5,8 @@ import {
   PAUSE_ACTION,
   TRANSPORT_FETCH_SUCCEEDED,
   TRANSPORT_FETCH_FAILED,
+  CURRENT_TRACK_FETCH_SUCCEEDED,
+  CURRENT_TRACK_FETCH_FAILED,
 } from './constants';
 
 const initialState = fromJS({
@@ -27,7 +29,12 @@ function appReducer(state = initialState, action) {
       return state.merge({
         transportState: action.transportInfo.current_transport_state,
       });
+    case CURRENT_TRACK_FETCH_SUCCEEDED:
+      return state.merge({
+        currentTrackInfo: action.currentTrackInfo,
+      });
     case TRANSPORT_FETCH_FAILED:
+    case CURRENT_TRACK_FETCH_FAILED:
       alert("failed to contact server");
       return state;
     default:
