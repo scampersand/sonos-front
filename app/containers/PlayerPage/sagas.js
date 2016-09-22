@@ -1,11 +1,21 @@
-// import { take, call, put, select } from 'redux-saga/effects';
+import { takeEvery, takeLatest } from 'redux-saga';
+import { call, put } from 'redux-saga/effects';
+import { sonos, sonosCmd, transportFetchSucceeded, transportFetchFailed } from '../App/actions';
+import { PAGE_LOADED } from '../App/constants';
 
-// Individual exports for testing
-export function* defaultSaga() {
-  return;
+function* fetchTransportState() {
+  const transportInfo = yield call(sonos, '/transport_info');
+  if (transportInfo.data) {
+    yield put(transportFetchSucceeded(transportInfo.data));
+  } else {
+    yield put(transportFetchFailed(transportInfo.err));
+  }
 }
 
-// All sagas to be loaded
+function* mySaga() {
+  yield* takeEvery(PAGE_LOADED, fetchTransportState);
+}
+
 export default [
-  defaultSaga,
+  mySaga,
 ];

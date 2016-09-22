@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { playMusic, pauseMusic, prevSong, nextSong } from '../App/actions';
 import { selectTransportState } from '../App/selectors';
+import { pageLoaded } from '../App/actions';
 import { FormattedMessage } from 'react-intl';
 import PlayControl from 'components/PlayControl';
 import messages from './messages';
@@ -16,7 +17,12 @@ export class PlayerPage extends React.Component { // eslint-disable-line react/p
     onPauseClicked: React.PropTypes.func,
     onNextClicked: React.PropTypes.func,
     transportState: React.PropTypes.string,
+    dispatch: React.PropTypes.func,  // from connect()
   };
+
+  componentDidMount() {
+    this.props.dispatch(pageLoaded());
+  }
 
   render() {
     return (

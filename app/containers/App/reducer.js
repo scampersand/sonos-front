@@ -3,6 +3,8 @@ import {
   DEFAULT_ACTION,
   PLAY_ACTION,
   PAUSE_ACTION,
+  TRANSPORT_FETCH_SUCCEEDED,
+  TRANSPORT_FETCH_FAILED,
 } from './constants';
 
 const initialState = fromJS({
@@ -21,6 +23,13 @@ function appReducer(state = initialState, action) {
       return state.merge({
         transportState: 'PAUSED_PLAYBACK',
       });
+    case TRANSPORT_FETCH_SUCCEEDED:
+      return state.merge({
+        transportState: action.transportInfo.current_transport_state,
+      });
+    case TRANSPORT_FETCH_FAILED:
+      alert("failed to contact server");
+      return state;
     default:
       return state;
   }
