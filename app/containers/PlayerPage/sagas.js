@@ -1,9 +1,10 @@
-import { takeEvery, takeLatest } from 'redux-saga';
-import { call, put } from 'redux-saga/effects';
+import { delay, takeEvery, takeLatest } from 'redux-saga';
+import { call, put, take } from 'redux-saga/effects';
 import { sonos, sonosCmd,
          transportFetchSucceeded, transportFetchFailed,
-         currentTrackFetchSucceeded, currentTrackFetchFailed } from '../App/actions';
-import { PAGE_LOADED } from '../App/constants';
+         currentTrackFetchSucceeded, currentTrackFetchFailed,
+         refreshInfos } from '../App/actions';
+import { PAGE_LOADED, REFRESH_INFOS } from '../App/constants';
 
 function* fetchTransportState() {
   const transportInfo = yield call(sonos, '/transport_info');
@@ -12,10 +13,6 @@ function* fetchTransportState() {
   } else {
     yield put(transportFetchFailed(transportInfo.err));
   }
-}
-
-function* fetchTransportSaga() {
-  yield* takeEvery(PAGE_LOADED, fetchTransportState);
 }
 
 function* fetchCurrentTrack() {
@@ -27,11 +24,22 @@ function* fetchCurrentTrack() {
   }
 }
 
-function* fetchCurrentTrackSaga() {
-  yield* takeEvery(PAGE_LOADED, fetchCurrentTrack);
+function* refresh() {
+  yield* takeEvery(REFRESH_INFOS, () => [
+    fetchCurrentTrack(),
+    fetchTransportState(),
+  ]);
+}
+
+function* runTimer() {
+  yield take(PAGE_LOADED);
+  while (true) {
+    yield put(refreshInfos());
+    yield delay(1000);
+  }
 }
 
 export default [
-  fetchTransportSaga,
-  fetchCurrentTrackSaga,
+  refresh,
+  runTimer,
 ];

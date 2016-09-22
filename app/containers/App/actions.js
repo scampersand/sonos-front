@@ -6,6 +6,8 @@ import {
   BACK_ACTION,
   NEXT_ACTION,
   PAGE_LOADED,
+  REFRESH_INFOS,
+  START_TIMER,
   TRANSPORT_FETCH_SUCCEEDED,
   TRANSPORT_FETCH_FAILED,
   CURRENT_TRACK_FETCH_SUCCEEDED,
@@ -73,6 +75,18 @@ export function nextSong() {
 export function pageLoaded() {
   return {
     type: PAGE_LOADED,
+  };
+}
+
+export function startTimer() {
+  return {
+    type: START_TIMER,
+  };
+}
+
+export function refreshInfos() {
+  return {
+    type: REFRESH_INFOS,
   };
 }
 
