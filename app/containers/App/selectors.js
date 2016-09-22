@@ -11,6 +11,11 @@ const selectTransportState = () => createSelector(
   (globalState) => globalState.get('transportState')
 );
 
+const selectCurrentTrackInfo = () => createSelector(
+  selectGlobal(),
+  (globalState) => globalState.get('currentTrackInfo')
+);
+
 // selectLocationState expects a plain JS object for the routing state
 const selectLocationState = () => {
   let prevRoutingState;
@@ -30,6 +35,7 @@ const selectLocationState = () => {
 
 export {
   selectGlobal,
+  selectCurrentTrackInfo,
   selectTransportState,
   selectLocationState,
 };

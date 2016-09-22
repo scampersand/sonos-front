@@ -11,6 +11,12 @@ import {
 
 const initialState = fromJS({
   transportState: 'PLAYING',
+  currentTrackInfo: {
+    title: '',
+    artist: '',
+    album: '',
+    album_art: 'http://placehold.it/512x512',
+  }
 });
 
 function appReducer(state = initialState, action) {
