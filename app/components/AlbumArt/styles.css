@@ -1,0 +1,7 @@
+.bigArt { /* stylelint-disable */
+  max-width: 512px;
+}
+
+.smallArt img { /* stylelint-disable */
+  max-width: 60px;
+}

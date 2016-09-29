@@ -1,23 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import AlbumArt from 'components/AlbumArt';
 import { FormattedMessage } from 'react-intl';
-import { selectCurrentTrackInfo } from '../../containers/App/selectors'
 import messages from './messages';
 import styles from './styles.css';
 
-function HorizontalPlayer(props) {
-  // waiting on refactor from PlayerPage
-  // let { title, artist, album, album_art } = props.currentTrackInfo.toJS();
+export default function HorizontalPlayer(props) {
   return (
     <div className={styles.horizontalPlayer}>
-      <img src="http://placehold.it/60x60" />
+      <AlbumArt small={true} />
     </div>
   );
 }
-
-const mapStateToProps = createStructuredSelector({
-  currentTrackInfo: selectCurrentTrackInfo(),
-});
-
-export default connect(mapStateToProps)(HorizontalPlayer);
