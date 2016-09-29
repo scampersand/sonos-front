@@ -15,7 +15,7 @@ import {
 } from './constants';
 
 const backendUrl = (window.location.hostname === '172.17.0.3' ?
-                    'http://172.17.0.4:5000' : 'http://172.17.0.7:5000');
+                    'http://172.20.1.197:5208' : 'http://172.20.1.197:5209');
 
 /*
  * TODO wrap this stuff in a Sonos object in utils/sonos.js
