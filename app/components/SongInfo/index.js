@@ -7,10 +7,9 @@ import messages from './messages';
 import styles from './styles.css';
 
 function SongInfo(props) {
-  let { title, artist, album, album_art } = props.currentTrackInfo.toJS();
+  let { title, artist, album } = props.currentTrackInfo.toJS();
   return (
     <div className={styles.songInfo}>
-      <img src={album_art}/>
       <h2>{title}</h2>
       <span>{artist}</span> - <span>{album}</span>
     </div>
