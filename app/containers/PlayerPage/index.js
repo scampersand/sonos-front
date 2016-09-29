@@ -4,8 +4,7 @@ import { playMusic, pauseMusic, prevSong, nextSong } from '../App/actions';
 import { selectTransportState } from '../App/selectors';
 import { pageLoaded } from '../App/actions';
 import { FormattedMessage } from 'react-intl';
-import PlayControl from 'components/PlayControl';
-import SongInfo from 'components/SongInfo';
+import VerticalPlayer from 'components/VerticalPlayer';
 import messages from './messages';
 import styles from './styles.css';
 import { createStructuredSelector } from 'reselect';
@@ -28,8 +27,7 @@ export class PlayerPage extends React.Component { // eslint-disable-line react/p
   render() {
     return (
       <div className={styles.playerPage}>
-        <SongInfo {...this.props} />
-        <PlayControl {...this.props} />
+        <VerticalPlayer {...this.props} />
       </div>
     );
   }
