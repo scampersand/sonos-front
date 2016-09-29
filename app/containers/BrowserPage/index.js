@@ -11,7 +11,7 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import styles from './styles.css';
 
-export class BrowserPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export default class BrowserPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div className={styles.browserPage}>
@@ -21,12 +21,12 @@ export class BrowserPage extends React.Component { // eslint-disable-line react/
   }
 }
 
-const mapStateToProps = selectBrowserPage();
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(BrowserPage);
+//const mapStateToProps = selectBrowserPage();
+//
+//function mapDispatchToProps(dispatch) {
+//  return {
+//    dispatch,
+//  };
+//}
+//
+//export default connect(mapStateToProps, mapDispatchToProps)(BrowserPage);
