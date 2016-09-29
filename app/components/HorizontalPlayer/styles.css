@@ -1,0 +1,9 @@
+.horizontalPlayer { /* stylelint-disable */
+  position: absolute;
+  bottom: 0;
+  height: 80px;
+  width: 100%;
+  padding: 10px;
+  background: #000;
+  color: #fff;
+}
