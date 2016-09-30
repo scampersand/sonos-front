@@ -35,7 +35,7 @@ function* runTimer() {
   yield take(PAGE_LOADED);
   while (true) {
     yield put(refreshInfos());
-    yield delay(5000);
+    yield delay(1000);
   }
 }
 
