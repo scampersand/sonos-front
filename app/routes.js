@@ -19,21 +19,11 @@ export default function createRoutes(store) {
   return [
     {
       path: '/',
-      name: 'home',
+      name: 'player',
       getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          System.import('containers/PlayerPage/sagas'),
-          System.import('containers/PlayerPage'),
-        ]);
-
-        const renderRoute = loadModule(cb);
-
-        importModules.then(([sagas, component]) => {
-          injectSagas(sagas.default);
-          renderRoute(component);
-        });
-
-        importModules.catch(errorLoading);
+        System.import('containers/PlayerPage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
       },
     },
     {

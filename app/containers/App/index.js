@@ -12,13 +12,20 @@
  */
 
 import React from 'react';
+import { connect } from 'react-redux';
+import { pageLoaded } from './actions';
 import styles from './styles.css';
 
-export default class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
     children: React.PropTypes.node,
+    dispatch: React.PropTypes.func,  // from connect()
   };
+
+  componentDidMount() {
+    this.props.dispatch(pageLoaded());
+  }
 
   render() {
     return (
@@ -28,3 +35,5 @@ export default class App extends React.Component { // eslint-disable-line react/
     );
   }
 }
+
+export default connect()(App);

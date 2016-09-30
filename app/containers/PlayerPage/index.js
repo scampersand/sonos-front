@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { FormattedMessage } from 'react-intl';
 import { playMusic, pauseMusic, prevSong, nextSong } from '../App/actions';
 import { selectTransportState } from '../App/selectors';
 import { pageLoaded } from '../App/actions';
-import { FormattedMessage } from 'react-intl';
 import VerticalPlayer from 'components/VerticalPlayer';
 import messages from './messages';
 import styles from './styles.css';
-import { createStructuredSelector } from 'reselect';
 
 export class PlayerPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -19,10 +19,6 @@ export class PlayerPage extends React.Component { // eslint-disable-line react/p
     transportState: React.PropTypes.string,
     dispatch: React.PropTypes.func,  // from connect()
   };
-
-  componentDidMount() {
-    this.props.dispatch(pageLoaded());
-  }
 
   render() {
     return (

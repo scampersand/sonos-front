@@ -3,8 +3,8 @@ import { call, put, take } from 'redux-saga/effects';
 import { sonos, sonosCmd,
          transportFetchSucceeded, transportFetchFailed,
          currentTrackFetchSucceeded, currentTrackFetchFailed,
-         refreshInfos } from '../App/actions';
-import { PAGE_LOADED, REFRESH_INFOS } from '../App/constants';
+         refreshInfos } from './actions';
+import { PAGE_LOADED, REFRESH_INFOS } from './constants';
 
 function* fetchTransportState() {
   const transportInfo = yield call(sonos, '/transport_info');
