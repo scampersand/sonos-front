@@ -1,10 +1,7 @@
 .playerPage { /* stylelint-disable */
-  height: 44em;
-  width: 32em;
-  position: absolute;
-  margin: -22em 0 0 -16em;
-  left: 50%;
-  top: 50%;
-
-  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
