@@ -1,11 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { selectCurrentTrackInfo } from '../../containers/App/selectors'
 import styles from './styles.css';
 
-function AlbumArt(props) {
-  let { album_art } = props.currentTrackInfo.toJS();
+export default function AlbumArt(props) {
+  let { album_art } = props.currentTrackInfo;
   let className = props.small ? styles.smallArt : styles.bigArt;
   return (
     <div className={className}>
@@ -13,9 +10,3 @@ function AlbumArt(props) {
     </div>
   );
 }
-
-const mapStateToProps = createStructuredSelector({
-  currentTrackInfo: selectCurrentTrackInfo(),
-});
-
-export default connect(mapStateToProps)(AlbumArt);

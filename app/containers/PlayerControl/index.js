@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 import { playMusic, pauseMusic, prevSong, nextSong } from 'containers/App/actions';
-import { selectTransportState } from 'containers/App/selectors';
+import { selectCurrentTrackInfo, selectTransportState } from 'containers/App/selectors';
 
 export class PlayerControl extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -12,6 +11,7 @@ export class PlayerControl extends React.Component { // eslint-disable-line reac
     onPlayClicked: React.PropTypes.func,
     onPauseClicked: React.PropTypes.func,
     onNextClicked: React.PropTypes.func,
+    currentTrackInfo: React.PropTypes.object,
     transportState: React.PropTypes.string,
     dispatch: React.PropTypes.func,  // from connect()
   };
@@ -26,9 +26,12 @@ export class PlayerControl extends React.Component { // eslint-disable-line reac
   }
 }
 
-const mapStateToProps = createStructuredSelector({
-  transportState: selectTransportState(),
-});
+function mapStateToProps(state) {
+  return {
+    currentTrackInfo: selectCurrentTrackInfo()(state).toJS(),
+    transportState: selectTransportState()(state),
+  }
+}
 
 function mapDispatchToProps(dispatch) {
   return {
