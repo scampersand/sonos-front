@@ -1,4 +1,6 @@
 import React from 'react';
+import MusicMenu from 'components/MusicMenu';
+import CategoryBrowser from 'components/CategoryBrowser';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import styles from './styles.css';
@@ -6,7 +8,8 @@ import styles from './styles.css';
 function MusicBrowser() {
   return (
     <div className={styles.musicBrowser}>
-      <FormattedMessage {...messages.header} />
+      <MusicMenu />
+      <CategoryBrowser />
     </div>
   );
 }
