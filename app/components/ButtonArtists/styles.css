@@ -1,0 +1,19 @@
+.buttonArtists { /* stylelint-disable */
+  margin-right: 1em;
+  margin-bottom: 1em;
+}
+
+.iconBackground {
+  height: 180px;
+  width: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(255, 255, 255);
+  background: rgb(174, 176, 181);
+}
+
+.buttonArtists p {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}

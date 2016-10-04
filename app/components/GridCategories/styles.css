@@ -1,0 +1,5 @@
+.gridCategories { /* stylelint-disable */
+  display: flex;
+  flex-flow: row wrap;
+  padding: 2.5em;
+}
