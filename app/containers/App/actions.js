@@ -23,10 +23,12 @@ const backendUrl = (window.location.hostname === '172.17.0.2' ?
 export function sonos(path, options) {
   options = {
     method: 'GET',
-    headers: new Headers({
-      'content-type': 'application/json',
-    }),
     ...options,
+  }
+  if (options.method !== 'GET' && !options.headers) {
+    options.headers = new Headers({
+      'content-type': 'application/json',
+    })
   }
   return request(backendUrl + path, options);
 }
