@@ -1,6 +1,6 @@
 import { delay, takeEvery, takeLatest } from 'redux-saga';
 import { call, put, take } from 'redux-saga/effects';
-import { sonos, sonosCmd,
+import { sonos,
          transportFetchSucceeded, transportFetchFailed,
          currentTrackFetchSucceeded, currentTrackFetchFailed,
          refreshInfos } from './actions';
