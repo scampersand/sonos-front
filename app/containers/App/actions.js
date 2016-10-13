@@ -14,7 +14,7 @@ import {
   CURRENT_TRACK_FETCH_FAILED,
 } from './constants';
 
-const backendUrl = (window.location.hostname === '172.17.0.3' ?
+const backendUrl = (window.location.hostname === '172.17.0.2' ?
                     'http://172.20.1.197:5208' : 'http://172.20.1.197:5209');
 
 /*
