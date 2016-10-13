@@ -13,7 +13,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { pageLoaded } from './actions';
+import { appLoaded } from './actions';
 import styles from './styles.css';
 
 export class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -24,7 +24,7 @@ export class App extends React.Component { // eslint-disable-line react/prefer-s
   };
 
   componentDidMount() {
-    this.props.dispatch(pageLoaded());
+    this.props.dispatch(appLoaded());
   }
 
   render() {

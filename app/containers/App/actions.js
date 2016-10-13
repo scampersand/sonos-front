@@ -74,7 +74,7 @@ export function nextSong() {
   };
 }
 
-export function pageLoaded() {
+export function appLoaded() {
   return {
     type: APP_LOADED,
   };
