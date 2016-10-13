@@ -21,8 +21,6 @@ const initialState = fromJS({
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
     case PLAY_ACTION:
       return state.merge({
         transportState: 'PLAYING',
@@ -41,7 +39,9 @@ function appReducer(state = initialState, action) {
       });
     case TRANSPORT_FETCH_FAILED:
     case CURRENT_TRACK_FETCH_FAILED:
-      alert("failed to contact server");
+      console.log("failed to contact server");
+      return state;
+    case DEFAULT_ACTION:
       return state;
     default:
       return state;
