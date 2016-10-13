@@ -5,7 +5,7 @@ import {
   PAUSE_ACTION,
   BACK_ACTION,
   NEXT_ACTION,
-  PAGE_LOADED,
+  APP_LOADED,
   REFRESH_INFOS,
   START_TIMER,
   TRANSPORT_FETCH_SUCCEEDED,
@@ -74,7 +74,7 @@ export function nextSong() {
 
 export function pageLoaded() {
   return {
-    type: PAGE_LOADED,
+    type: APP_LOADED,
   };
 }
 

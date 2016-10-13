@@ -4,7 +4,7 @@ import { sonos, sonosCmd,
          transportFetchSucceeded, transportFetchFailed,
          currentTrackFetchSucceeded, currentTrackFetchFailed,
          refreshInfos } from './actions';
-import { PAGE_LOADED, REFRESH_INFOS } from './constants';
+import { APP_LOADED, REFRESH_INFOS } from './constants';
 
 function* fetchTransportState() {
   const transportInfo = yield call(sonos, '/transport_info');
@@ -32,7 +32,7 @@ function* refresh() {
 }
 
 function* runTimer() {
-  yield take(PAGE_LOADED);
+  yield take(APP_LOADED);
   while (true) {
     yield put(refreshInfos());
     yield delay(1000);
