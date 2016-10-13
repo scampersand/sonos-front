@@ -1,15 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import MenuItem from 'components/MenuItem';
 import { FormattedMessage } from 'react-intl';
+import { selectBrowserMenu } from 'containers/BrowserPage/selectors';
 import messages from './messages';
 import styles from './styles.css';
 
-function MusicMenu() {
-  return (
-    <div className={styles.musicMenu}>
-      <MenuItem />      
-    </div>
-  );
+export class MusicMenu extends React.Component { // eslint-disable-line react/prefer-stateless-function
+
+  render() {
+    let menuItems = this.props.menu.items.map(({title, path}) => (
+      <MenuItem key={path} title={title} />
+    ))
+    return (
+      <div className={styles.musicMenu}>
+        {menuItems}
+      </div>
+    );
+  }
 }
 
-export default MusicMenu;
+const mapStateToProps = (state) => ({
+  menu: selectBrowserMenu(state),
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MusicMenu);
