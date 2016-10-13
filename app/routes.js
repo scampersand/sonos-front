@@ -30,12 +30,21 @@ export default function createRoutes(store) {
       path: '/music',
       name: 'browser',
       getComponent(nextState, cb) {
-        System.import('containers/BrowserPage')
-          .then(loadModule(cb))
+        const importModules = Promise.all([
+          System.import('containers/BrowserPage/reducer'),
+          System.import('containers/BrowserPage/sagas'),
+          System.import('containers/BrowserPage'),
+        ]);
+        const renderRoute = loadModule(cb);
+        importModules
+          .then(([reducer, sagas, component]) => {
+            injectReducer('browser', reducer.default);
+            injectSagas(sagas.default);
+            renderRoute(component);
+          })
           .catch(errorLoading);
       },
-    },
-    {
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
