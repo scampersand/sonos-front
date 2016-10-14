@@ -12,6 +12,10 @@ const initialState = fromJS({
     title: '',
     items: [],
   },
+  content: {
+    title: '',
+    items: [],
+  },
 })
 
 function browserPageReducer(state = initialState, action) {
