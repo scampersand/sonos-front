@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import MenuItem from 'components/MenuItem';
 import { FormattedMessage } from 'react-intl';
 import { selectBrowserMenu } from 'containers/BrowserPage/selectors';
+import { chooseMenuItem } from 'containers/BrowserPage/actions';
 import messages from './messages';
 import styles from './styles.css';
 
@@ -11,7 +12,7 @@ export class MusicMenu extends React.Component { // eslint-disable-line react/pr
   render() {
     // https://facebook.github.io/react/docs/multiple-components.html#dynamic-children
     let menuItems = this.props.menu.items.map(({title, path}) => (
-      <MenuItem key={path} title={title} />
+      <MenuItem key={path} title={title} onClick={() => this.props.onClick(path)} />
     ))
     return (
       <div className={styles.musicMenu}>
@@ -26,6 +27,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
+  onClick: (path) => dispatch(chooseMenuItem(path)),
   dispatch,
 })
 

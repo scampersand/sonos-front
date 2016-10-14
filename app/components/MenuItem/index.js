@@ -6,9 +6,13 @@ import styles from './styles.css';
 function MenuItem(props) {
   return (
     <div className={styles.menuItem}>
-      <span>{props.title}</span>
+      <button onClick={props.onClick}>{props.title}</button>
     </div>
   );
 }
+
+MenuItem.propTypes = {
+  onClick: React.PropTypes.func,
+};
 
 export default MenuItem;

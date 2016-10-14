@@ -10,6 +10,7 @@ import {
 import {
   BROWSER_PAGE_LOADED,
   REFRESH_BROWSER_MENU,
+  CHOOSE_MENU_ITEM,
 } from './constants'
 
 function* fetchBrowserMenu() {
@@ -30,6 +31,19 @@ function* refreshBrowserMenu() {
   ])
 }
 
+function* fetchBrowserContent() {
+  while (true) {
+    const { path } = yield take(CHOOSE_MENU_ITEM)
+    const browserContent = yield call(sonos, path)
+    if (browserContent.data) {
+      yield put(browserContentFetchSucceeded(browserContent.data))
+    } else {
+      yield put(browserContentFetchFailed(browserContent.err))
+    }
+  }
+}
+
 export default [
   refreshBrowserMenu,
+  fetchBrowserContent,
 ]
