@@ -9,6 +9,7 @@ import styles from './styles.css';
 export class MusicMenu extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   render() {
+    // https://facebook.github.io/react/docs/multiple-components.html#dynamic-children
     let menuItems = this.props.menu.items.map(({title, path}) => (
       <MenuItem key={path} title={title} />
     ))
